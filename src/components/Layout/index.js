@@ -1,15 +1,16 @@
-import "./index.scss";
-import { Outlet } from 'react-router-dom';
+import './index.scss'; 
+import Sidebar from '../Sidebar'
+import { Outlet } from 'react-router-dom'
 
-const Layout = () => {
+const Layout = () => { 
     return(
         <div className = "App">
-            {/* <Sidebar /> */}
+            <Sidebar />
             <div className = "page">
                 <Outlet />
             </div>
         </div>
-    )
+    ) 
 }
 
 export default Layout
