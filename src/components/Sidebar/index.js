@@ -2,7 +2,7 @@
 import './index.scss'
 import { Link, NavLink } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faSearch, faTshirt, faBars, faClose, faUsers, faFlag } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faSearch, faCalendar, faPencil, faEnvelope, faClose, faBars} from '@fortawesome/free-solid-svg-icons'
 import LogoMcGill from "../../assets/McGillLogo.png"
 import LogoSubtitle from '../../assets/exam-sub-logo.png'
 import { useState } from 'react'
@@ -19,17 +19,17 @@ const Sidebar = () => {
                 <NavLink exact="true" activeclassname = "active" to="/">
                     <FontAwesomeIcon icon = {faHome}  onClick={() => setShowNav(false)} />
                 </NavLink>
-                <NavLink exact="true" activeclassname = "active" className = "teams-link" to="/teams">
-                    <FontAwesomeIcon icon = {faUsers} onClick={() => setShowNav(false)}/>
-                </NavLink>
-                <NavLink exact="true" activeclassname = "active" className = "nation-link" to="/nation">
-                    <FontAwesomeIcon icon = {faFlag} onClick={() => setShowNav(false)} />
-                </NavLink>
-                <NavLink exact="true" activeclassname = "active" className = "position-link" to="/position">
-                    <FontAwesomeIcon icon = {faTshirt}  onClick={() => setShowNav(false)}/>
-                </NavLink>
                 <NavLink exact="true" activeclassname = "active" className = "search-link" to="/search">
-                    <FontAwesomeIcon icon = {faSearch} onClick={() => setShowNav(false)} />
+                    <FontAwesomeIcon icon = {faSearch} onClick={() => setShowNav(false)}/>
+                </NavLink>
+                <NavLink exact="true" activeclassname = "active" className = "calendar-link" to="/calendar">
+                    <FontAwesomeIcon icon = {faCalendar} onClick={() => setShowNav(false)} />
+                </NavLink>
+                <NavLink exact="true" activeclassname = "active" className = "edit-link" to="/edit">
+                    <FontAwesomeIcon icon = {faPencil}  onClick={() => setShowNav(false)}/>
+                </NavLink>
+                <NavLink exact="true" activeclassname = "active" className = "contact-link" to="/contact">
+                    <FontAwesomeIcon icon = {faEnvelope} onClick={() => setShowNav(false)} />
                 </NavLink>
                 <FontAwesomeIcon icon = {faClose} size = "3x" className="close-icon" onClick={() => setShowNav(false)} />
             </nav>
