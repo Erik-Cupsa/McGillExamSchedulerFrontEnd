@@ -76,26 +76,25 @@
             }
         }
 
-        a.teams-link { 
-            &:after { 
-                content: "TEAMS";
-            }
-        }
-
         a.search-link { 
             &:after { 
                 content: "SEARCH";
             }
         }
 
-        a.position-link { 
+        a.calendar-link { 
             &:after { 
-                content: "POSITION"; 
+                content: "CALENDAR"; 
             }
         }
-        a.nation-link { 
+        a.edit-link { 
             &:after { 
-                content: "NATION"; 
+                content: "EDIT"; 
+            }
+        }
+        a.contact-link {
+            &:after {
+                content: "CONTACT";
             }
         }
 
