@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faSearch, faTshirt, faBars, faClose, faUsers, faFlag } from '@fortawesome/free-solid-svg-icons'
 import LogoMcGill from "../../assets/McGillLogo.png"
-// import LogoSubtitle from '../../assets/images/sub-logo.png'
+import LogoSubtitle from '../../assets/exam-sub-logo.png'
 import { useState } from 'react'
 
 const Sidebar = () => {
@@ -13,7 +13,7 @@ const Sidebar = () => {
         <div className = 'nav-bar'> 
             <Link className = "logo" to="/"> 
                 <img src = {LogoMcGill} alt="logo" />
-                {/* <img className="sub-logo" src = {LogoSubtitle} alt="PremierZone" /> */}
+                <img className="sub-logo" src = {LogoSubtitle} alt="Exam Scheduler" />
             </Link>
             <nav className={showNav ? 'mobile-show' : ""}>
                 <NavLink exact="true" activeclassname = "active" to="/">
