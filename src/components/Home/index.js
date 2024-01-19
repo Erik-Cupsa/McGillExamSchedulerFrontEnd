@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import Loader from "react-loaders";
 import { Link } from "react-router-dom";
-import LogoMcGill from "../../assets/McGillLogo.png"
+import LogoMcGill from "../../assets/McGillLogo.png";
+import AnimatedLetters from "../AnimatedLetters";
 import "./index.scss";
 
 const Home = () => {
+    
     return(
         <>
             <div className = "container home-page">
