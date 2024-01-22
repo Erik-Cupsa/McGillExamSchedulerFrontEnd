@@ -6,18 +6,23 @@ const DataHandling = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [examData, setExamData] = useState([]);
+  const [selectedExams, setSelectedExams] = useState([]);
 
   useEffect(() => {
+    const storedCalendar = JSON.parse(localStorage.getItem('calendar')) || [];
+    setSelectedExams(storedCalendar);
+
     const params = new URLSearchParams(window.location.search);
     const className = params.get('name');
 
     if (className) {
-      axios.get(`http://localhost:8080/api/v1/exam?className=${encodeURIComponent(className)}`)
-        .then(response => {
+      axios
+        .get(`http://localhost:8080/api/v1/exam?className=${encodeURIComponent(className)}`)
+        .then((response) => {
           setExamData(response.data);
           setLoading(false);
         })
-        .catch(error => {
+        .catch((error) => {
           setError(error);
           setLoading(false);
         });
@@ -25,6 +30,20 @@ const DataHandling = () => {
       setLoading(false);
     }
   }, []);
+
+  const handleAddToCalendar = (exam) => {
+    const isDuplicate = selectedExams.some((selectedExam) => selectedExam.examKey === exam.examKey);
+  
+    if (!isDuplicate) {
+      setSelectedExams((prevSelectedExams) => {
+        const updatedExams = [...prevSelectedExams, exam];
+  
+        localStorage.setItem('calendar', JSON.stringify(updatedExams));
+  
+        return updatedExams;
+      });
+    }
+  };
 
   if (loading) {
     return <p>Loading...</p>;
@@ -50,10 +69,11 @@ const DataHandling = () => {
             <th>Rows</th>
             <th>Row Start</th>
             <th>Row End</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {examData.map(exam => (
+          {examData.map((exam) => (
             <tr key={`${exam.course}-${exam.section}`}>
               <td>{exam.course}</td>
               <td>{exam.section}</td>
@@ -66,6 +86,9 @@ const DataHandling = () => {
               <td>{exam.rows}</td>
               <td>{exam.rowStart}</td>
               <td>{exam.rowEnd}</td>
+              <td>
+                <button onClick={() => handleAddToCalendar(exam)}>Add to Calendar</button>
+              </td>
             </tr>
           ))}
         </tbody>
