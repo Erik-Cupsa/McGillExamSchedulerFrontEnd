@@ -1,5 +1,3 @@
-// Calendar.js
-
 import React, { useState, useEffect } from 'react';
 import ICAL from 'ical.js';
 
@@ -7,40 +5,60 @@ const Calendar = () => {
   const [selectedExams, setSelectedExams] = useState([]);
 
   useEffect(() => {
-    // Load existing calendar from local storage on component mount
     const storedCalendar = JSON.parse(localStorage.getItem('calendar')) || [];
     setSelectedExams(storedCalendar);
   }, []);
 
   const handleRemoveExam = (examKey) => {
     const updatedExams = selectedExams.filter((exam) => exam.examKey !== examKey);
-
-    // Update state and local storage with the new set of exams
     setSelectedExams(updatedExams);
     localStorage.setItem('calendar', JSON.stringify(updatedExams));
   };
 
+  const formatDateTime = (dateTime) => {
+    const isoDateTime = new Date(dateTime).toISOString();
+    return isoDateTime.replace(/[-:]/g, '').slice(0, -5);
+  };
+
   const handleExportCalendar = () => {
-    const jcalData = {
-      prodid: '//My Exam Calendar//EN',
-      events: selectedExams.map((exam) => ({
-        uid: exam.examKey,
-        summary: `${exam.course} - ${exam.exam_type}`,
-        start: exam.exam_start_time,
-        end: exam.exam_end_time,
-        description: `Room: ${exam.room}, Building: ${exam.building}`,
-      })),
-    };
+    try {
+      const calendarContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'CALSCALE:GREGORIAN',
+        ...selectedExams.map((exam) => {
+          const uniqueId = `${exam.course}-${exam.section}-${exam.exam_start_time.replace(/\s/g, '_')}`;
+          return [
+            'BEGIN:VEVENT',
+            `SUMMARY:${exam.course} - ${exam.exam_type}`,
+            `DESCRIPTION:Room: ${exam.room}, Building: ${exam.building}`,
+            `DTSTART:${formatDateTime(exam.exam_start_time)}`,
+            `DTEND:${formatDateTime(exam.exam_end_time)}`,
+            'LOCATION:Event Location',
+            'STATUS:CONFIRMED',
+            'SEQUENCE:0',
+            'BEGIN:VALARM',
+            'TRIGGER:-PT15M',
+            'DESCRIPTION:Reminder',
+            'ACTION:DISPLAY',
+            'END:VALARM',
+            'END:VEVENT',
+          ].join('\n');
+        }),
+        'END:VCALENDAR',
+      ].join('\n');
 
-    const jcalStr = JSON.stringify(jcalData);
-    const jcalDataURI = `data:text/calendar;charset=utf-8,${encodeURIComponent(jcalStr)}`;
+      const calendarDataURI = `data:text/calendar;charset=utf-8,${encodeURIComponent(calendarContent)}`;
 
-    const link = document.createElement('a');
-    link.href = jcalDataURI;
-    link.download = 'exam_calendar.ics';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+      const link = document.createElement('a');
+      link.href = calendarDataURI;
+      link.download = 'exam_calendar.ics';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error('Error exporting calendar:', error);
+    }
   };
 
   return (
