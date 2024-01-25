@@ -7,7 +7,6 @@ const Search = () => {
   const [letterClass, setLetterClass] = useState("text-animate");
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);
-  const [examResults, setExamResults] = useState([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -24,7 +23,11 @@ const Search = () => {
   };
 
   const handleGoButtonClick = () => {
-    window.location.href = `/data?name=${encodeURIComponent(searchQuery)}`;
+    setLoading(true);
+
+    setTimeout(() => {
+      window.location.href = `/data?name=${encodeURIComponent(searchQuery)}`;
+    }, 1);
   };
 
   return (
@@ -46,17 +49,6 @@ const Search = () => {
       </div>
 
       {loading && <Loader type="pacman" />}
-
-      {examResults.length > 0 && (
-        <div className="exam-results">
-          <h3>Exam Results:</h3>
-          <ul>
-            {examResults.map((result) => (
-              <li key={result.examId}>{/* Render your exam result data here */}</li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   );
 };

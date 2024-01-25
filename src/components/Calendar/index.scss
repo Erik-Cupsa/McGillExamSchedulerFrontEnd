@@ -1,34 +1,29 @@
-$primary-color: #3498db;
-$secondary-color: #2ecc71;
-$text-color: #333;
-
-// Basic styles for the calendar container
-div {
-  padding: 20px;
-  border: 1px solid $primary-color;
-  border-radius: 5px;
-  margin-top: 20px;
-
-  h2 {
-    color: $primary-color;
-    margin-bottom: 10px;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-
-    li {
-      margin-bottom: 10px;
+.calendarContainer{
+    margin-top: 200px;
+    h1{
+        color: #fff; 
+        font-size: 53px; 
+        margin: 0; 
+        font-weight: 400; 
+        cursor: pointer;
+    
+        &::before { 
+            color: #ffd700; 
+            font-size: 18px; 
+            position: absolute; 
+            margin-top: -40px; 
+            left: 15px; 
+            opacity: 0.6; 
+        }
+    
+        &::after { 
+            color: #ffd700; 
+            font-size: 18px; 
+            position: absolute; 
+            margin-top: 18px; 
+            left: 20px; 
+            animation: fadeIn 1s 1.7s backwards; 
+            opacity: 0.6; 
+        }
     }
-
-    strong {
-      color: $secondary-color;
-    }
-  }
-
-  p {
-    color: $text-color;
-  }
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ICAL from 'ical.js';
+import "./index.scss";
 
 const Calendar = () => {
   const [selectedExams, setSelectedExams] = useState([]);
@@ -62,8 +62,8 @@ const Calendar = () => {
   };
 
   return (
-    <div>
-      <h2>Your Exam Schedule</h2>
+    <div className = "calendarContainer">
+      <h1>Your Exam Schedule</h1>
       {selectedExams.length === 0 ? (
         <p>No exams in your schedule.</p>
       ) : (
