@@ -20,28 +20,58 @@ const Calendar = () => {
     localStorage.setItem('calendar', JSON.stringify(updatedExams));
   };
 
-  const handleExportCalendar = () => {
-    const jcalData = {
-      prodid: '//My Exam Calendar//EN',
-      events: selectedExams.map((exam) => ({
-        uid: exam.examKey,
-        summary: `${exam.course} - ${exam.exam_type}`,
-        start: exam.exam_start_time,
-        end: exam.exam_end_time,
-        description: `Room: ${exam.room}, Building: ${exam.building}`,
-      })),
+// ... (Your imports and other code)
+
+const handleExportCalendar = () => {
+    const formatDateTime = (dateTime) => {
+      const isoDateTime = new Date(dateTime).toISOString();
+      return isoDateTime.replace(/[-:]/g, '').slice(0, -5); // Format as "YYYYMMDDTHHmmss"
     };
-
-    const jcalStr = JSON.stringify(jcalData);
-    const jcalDataURI = `data:text/calendar;charset=utf-8,${encodeURIComponent(jcalStr)}`;
-
-    const link = document.createElement('a');
-    link.href = jcalDataURI;
-    link.download = 'exam_calendar.ics';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  
+    try {
+      const calendarContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'CALSCALE:GREGORIAN',
+        ...selectedExams.map((exam) => {
+          const uniqueId = `${exam.course}-${exam.section}-${exam.exam_start_time.replace(/\s/g, '_')}`;
+          return [
+            'BEGIN:VEVENT',
+            `SUMMARY:${exam.course} - ${exam.exam_type}`,
+            `DESCRIPTION:Room: ${exam.room}, Building: ${exam.building}`,
+            `DTSTART:${formatDateTime(exam.exam_start_time)}`,
+            `DTEND:${formatDateTime(exam.exam_end_time)}`,
+            'LOCATION:Event Location', // You can customize this line
+            'STATUS:CONFIRMED',
+            'SEQUENCE:0',
+            'BEGIN:VALARM',
+            'TRIGGER:-PT15M',
+            'DESCRIPTION:Reminder',
+            'ACTION:DISPLAY',
+            'END:VALARM',
+            'END:VEVENT',
+          ].join('\n');
+        }),
+        'END:VCALENDAR',
+      ].join('\n');
+  
+      const calendarDataURI = `data:text/calendar;charset=utf-8,${encodeURIComponent(calendarContent)}`;
+  
+      const link = document.createElement('a');
+      link.href = calendarDataURI;
+      link.download = 'exam_calendar.ics';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error('Error exporting calendar:', error);
+    }
   };
+  
+  // ... (The rest of your component)
+  
+  
+  
 
   return (
     <div>
