@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import "./index.scss";
+import AnimatedLetters from '../AnimatedLetters';
 
 const Calendar = () => {
   const [selectedExams, setSelectedExams] = useState([]);
+  const [letterClass, setLetterClass] = useState("text-animate");
 
   useEffect(() => {
     const storedCalendar = JSON.parse(localStorage.getItem('calendar')) || [];
     setSelectedExams(storedCalendar);
-  }, []);
+
+    const timer = setTimeout(() => {
+        setLetterClass("text-animate-hover");
+      }, 3000);
+  
+      return () => {
+        clearTimeout(timer);
+      };
+    }, []);
 
   const handleRemoveExam = (examKey) => {
     const updatedExams = selectedExams.filter((exam) => exam.examKey !== examKey);
@@ -62,21 +72,36 @@ const Calendar = () => {
   };
 
   return (
-    <div className = "calendarContainer">
-      <h1>Your Exam Schedule</h1>
+    <div className = "container calendar-page">
+        <h1 className="page-title">
+            <br />
+            <br />
+            <AnimatedLetters letterClass={letterClass} strArray={"Calendar".split("")} idx={15} />
+      </h1>
       {selectedExams.length === 0 ? (
-        <p>No exams in your schedule.</p>
+        <h2>No exams in your schedule.</h2>
       ) : (
         <div>
           <ul>
             {selectedExams.map((exam) => (
               <li key={exam.examKey}>
                 <strong>{exam.course}</strong> - {exam.exam_type} - {exam.exam_start_time} to {exam.exam_end_time}
-                <button onClick={() => handleRemoveExam(exam.examKey)}>Remove</button>
+                <button onClick={() => handleRemoveExam(exam.examKey)}>
+                    <span class="shadow"></span>
+                    <span class="edge"></span>
+                    <span class="front text"> Remove</span>
+                </button>
+                <br/>
+                <br/>
               </li>
             ))}
           </ul>
-          <button onClick={handleExportCalendar}>Export to iCal</button>
+          <button class="button" onClick={handleExportCalendar}>
+            <span class="button_lg">
+                <span class="button_sl"></span>
+                <span class="button_text">Download Now</span>
+            </span>
+            </button>
         </div>
       )}
     </div>
