@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Search from './components/Search';
 import DataHandling from './components/DataHandling';
 import Calendar from './components/Calendar';
+import Contact from './components/Contact';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="search" element={<Search />} />
           <Route path="data" element={<DataHandling />} />
           <Route path="calendar" element={<Calendar />} />
+          <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>
     </>
