@@ -2,7 +2,7 @@
 import './index.scss'
 import { Link, NavLink } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faSearch, faCalendar, faPencil, faEnvelope, faClose, faBars} from '@fortawesome/free-solid-svg-icons'
+import { faHome, faSearch, faCalendar, faEnvelope, faClose, faBars} from '@fortawesome/free-solid-svg-icons'
 import LogoMcGill from "../../assets/McGillLogo.png"
 import LogoSubtitle from '../../assets/exam-sub-logo.png'
 import { useState } from 'react'
@@ -24,9 +24,6 @@ const Sidebar = () => {
                 </NavLink>
                 <NavLink exact="true" activeclassname = "active" className = "calendar-link" to="/calendar">
                     <FontAwesomeIcon icon = {faCalendar} onClick={() => setShowNav(false)} />
-                </NavLink>
-                <NavLink exact="true" activeclassname = "active" className = "edit-link" to="/edit">
-                    <FontAwesomeIcon icon = {faPencil}  onClick={() => setShowNav(false)}/>
                 </NavLink>
                 <NavLink exact="true" activeclassname = "active" className = "contact-link" to="/contact">
                     <FontAwesomeIcon icon = {faEnvelope} onClick={() => setShowNav(false)} />
