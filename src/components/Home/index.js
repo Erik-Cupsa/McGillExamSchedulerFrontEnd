@@ -25,7 +25,7 @@ const Home = () => {
             <div className = "container home-page">
                 <div className = "text-zone">
                     <h1>
-                        <img src={LogoMcGill} alt = "McGill Exam Scheduler"/>
+                        {/* <img src={LogoMcGill} alt = "McGill Exam Scheduler"/> */}
                         <br />
                         <AnimatedLetters letterClass={letterClass} strArray={welcomeArray1} idx={12} />
                         <br />
