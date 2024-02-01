@@ -28,6 +28,9 @@ const Sidebar = () => {
                 <NavLink exact="true" activeclassname = "active" className = "contact-link" to="/contact">
                     <FontAwesomeIcon icon = {faEnvelope} onClick={() => setShowNav(false)} />
                 </NavLink>
+                <a href="https://www.mcgill.ca/exams/dates" className="button-link" target="_blank" rel="noopener noreferrer">
+                    VIEW EXAMS
+                </a>
                 <FontAwesomeIcon icon = {faClose} size = "3x" className="close-icon" onClick={() => setShowNav(false)} />
             </nav>
             <FontAwesomeIcon onClick={() => setShowNav(true)} icon={faBars} color="#ffd700" size="3x" className="hamburger-icon" />
