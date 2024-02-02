@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import Loader from "react-loaders";
 import { Link } from "react-router-dom";
-import LogoMcGill from "../../assets/McGillLogo.png";
 import AnimatedLetters from "../AnimatedLetters";
 import "./index.scss";
+import Logo from "./Logo";
 
 const Home = () => {
     const [letterClass, setLetterClass] = useState("text-animate")
-    const welcomeArray1 = "Welcome to".split("");
+    const welcomeArray1 = "Welcome To".split("");
     const welcomeArray2 = "McGill Exam Scheduler!".split("");
     
     useEffect(() => {
@@ -25,15 +25,16 @@ const Home = () => {
             <div className = "container home-page">
                 <div className = "text-zone">
                     <h1>
-                        {/* <img src={LogoMcGill} alt = "McGill Exam Scheduler"/> */}
-                        <br />
                         <AnimatedLetters letterClass={letterClass} strArray={welcomeArray1} idx={12} />
                         <br />
                         <AnimatedLetters letterClass={letterClass} strArray={welcomeArray2} idx = {14} />
                     </h1>
-                    <h2>Add your exams to your calendar with ease!</h2>
-                    <Link to="/search" className="flat-button">GET STARTED</Link>
+                    <br/>
+                    <h2>Add your exams to your calendar with ease! <br/> Just search, click add, and export...
+                    <br/><br/><br/><Link to="/search" className="flat-button">GET STARTED</Link>
+                    </h2>
                 </div>
+                <Logo className="Home"/>
             </div>
             <Loader type="pacman" />
         </>

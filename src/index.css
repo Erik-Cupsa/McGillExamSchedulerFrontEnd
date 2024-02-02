@@ -9,7 +9,7 @@ body {
   display: block;  
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+  background: #190a0a;
 }
 .dashboard{
   margin-top: 200px; 

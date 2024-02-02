@@ -31,7 +31,7 @@
         padding-left: 0;
         flex-grow: 1;
         a { 
-            font-size: 30px; 
+            font-size: 25px; 
             color: #f0f0f083;
             display: block; 
             margin: 0 80px; 
@@ -61,7 +61,6 @@
                 position: absolute; 
                 bottom: 0; 
                 display: block; 
-                width: 100%; 
                 text-align: center; 
                 opacity: 0; 
                 transition: all 0.3s ease-out;
@@ -134,41 +133,47 @@
            }
     }
 }
+
 .hamburger-icon, 
 .close-icon { 
     display: none;
 }
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1150px){
     .nav-bar{
         position: initial; 
-        height: auto; 
-        min-height: auto;
-
-        nav{
-            display: none;
+        height: 100px; 
+        .logo{
+            img { 
+                width: 50px; 
+                &.sub-logo { 
+                    width: 100px; 
+                    margin-left: -7px;
+                }
+            }
         }
 
         nav{
+            display: none;
             width: 100%; 
-            height: 140px;
-            background: #184E77;
+            height: 100%;
+            background: #1a0408;
             top: 0; 
             left: 0; 
             position: fixed; 
             z-index: 2; 
             margin: 0;
 
-            a {
-                display: flex; 
+            a { 
+                display: flex;
                 padding-left: 35%; 
-                margin: 4px;
+                margin: 30px;
             }
 
             a:after{
                 opacity: 1;
                 position: initial;
                 width: auto;
-                margin-left: 10px;
+                padding-left: 50px;;
             }
 
             a svg {
@@ -178,13 +183,19 @@
             &.mobile-show { 
                 display: block;
             }
+            .button-link{
+                margin-top: 150px;
+                margin-left: 40%;
+                width: 100px;
+            }
         }
         .hamburger-icon, 
         .close-icon {
             display: block;
             position: absolute; 
             top: 15px; 
-            right: 15px; 
+            right: 15px;
+            color: #f76d3f; 
         }
 
     }
