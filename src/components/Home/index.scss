@@ -83,14 +83,21 @@
     }
 }
 
-@media screen and (max-width: 1400px){
+@media screen and (max-width: 1580px){
     .home-page{
         h1{
-            font-size: 39px;
+            font-size: 50px;
         }
     }
 }
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1320px){
+    .home-page{
+        h1{
+            font-size: 40px;
+        }
+    }
+}
+@media screen and (max-width: 1150px){
     
     .home-page{
         h1{
@@ -98,20 +105,31 @@
             justify-content: center;
         }
         .text-zone{
-            position: block;
+            position: initial;
             width: 100%; 
             transform: none;
             padding: 10px;
             box-sizing: border-box;
             display: inline-block;
             text-align: left;
-            padding-top: 100px;
+            margin-left: 20px;
+        }
+
+        .logo-container {
+            position: relative; 
+            width: 250px;
+            height: auto; 
+            top: 50px; 
+            right: 0; 
+            box-sizing: border-box; 
+            margin: auto; 
+            left: 0; 
         }
 
         .flat-button{
             float: none;
             display: block;
-            width: 125px;
+            // width: 125px;
         }
     }
 }

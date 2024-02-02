@@ -3,6 +3,7 @@ import Loader from "react-loaders";
 import { Link } from "react-router-dom";
 import AnimatedLetters from "../AnimatedLetters";
 import "./index.scss";
+import Logo from "./Logo";
 
 const Home = () => {
     const [letterClass, setLetterClass] = useState("text-animate")
@@ -33,6 +34,7 @@ const Home = () => {
                     <br/><br/><br/><Link to="/search" className="flat-button">GET STARTED</Link>
                     </h2>
                 </div>
+                <Logo className="Home"/>
             </div>
             <Loader type="pacman" />
         </>
