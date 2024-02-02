@@ -11,14 +11,13 @@
     }
     h1{
         color: #fff; 
-        font-size: 53px; 
+        font-size: 60px; 
         margin: 0; 
-        font-weight: 400; 
+        font-weight: 600; 
         cursor: pointer;
 
         &::before { 
             color: #ffd700; 
-            font-size: 18px; 
             position: absolute; 
             margin-top: -40px; 
             left: 15px; 
@@ -27,49 +26,60 @@
 
         &::after { 
             color: #ffd700; 
-            font-size: 18px; 
             position: absolute; 
             margin-top: 18px; 
             left: 20px; 
             animation: fadeIn 1s 1.7s backwards; 
             opacity: 0.6; 
         }
-        img { 
-            width: 200px; 
-            opacity: 0; 
-            height: auto; 
-            animation: rotateIn 1s linear both; 
-            animation-delay: 1.4s; 
-        }
     }
 
     h2 { 
-        color: #ade8f4; 
+        color: #fff; 
         margin-top: 20px; 
-        font-weight: 500; 
-        font-size: 11px; 
-        font-family: sans-serif; 
-        letter-spacing: 3px; 
+        font-weight: 550; 
+        font-size: 14px; 
+        letter-spacing: 2px; 
         animation: fadeIn 1s 1.8s backwards; 
     }
 
     .flat-button { 
-        color: #ffd700; 
-        font-size: 15px; 
-        font-weight: 800;
-        letter-spacing: 4px;
+        border: none;
+        color: #fff;
+        background-image: linear-gradient(30deg, #ff4000, #fd9815);
+        border-radius: 10px;
+        background-size: 100% auto;
+        font-family: inherit;
+        font-size: 20px;
+        text-align: center;
+        padding: 0.6em 1.5em;
+        white-space: nowrap;
         text-decoration: none;
-        padding: 10px 18px; 
-        border: 2px solid #ffd700; 
         margin-top: 25px; 
         float: left; 
-        animation: fadeIn 1s 1.8s backwards; 
         white-space: nowrap; 
-
+        width: 200px;
+        
         &:hover { 
-            background: #ffd700; 
-            color: #333;
+            background-position: right center;
+            background-size: 200% auto;
+            -webkit-animation: pulse 2s infinite;
+            animation: pulse512 1.5s infinite;
         }
+        @keyframes pulse512 {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.6);
+            }
+            
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 165, 0, 0%);
+            }
+            
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 165, 0, 0%);
+            }
+            
+           }
     }
 }
 
