@@ -22,9 +22,8 @@ background: linear-gradient(to bottom right, #1a0408 30%, #8c1d01 80%);
     animation-delay: 1s; 
 }
 
-.container.search-page,
+.container.seach-page,
 .container.calendar-page,
-.container.edit-page,
 .container.contact-page {
   .images-container {
     .image-box {
@@ -64,40 +63,30 @@ background: linear-gradient(to bottom right, #1a0408 30%, #8c1d01 80%);
   table {
     width: 1000px; 
   }
+  h1{
+    color: #fff; 
+    font-size: 60px; 
+    margin: 0; 
+    font-weight: 600; 
+    cursor: pointer;
 
-    h1 {
-      font-size: 53px;
-      font-family: 'Coolvetica';
-      color: #ffd700;
-      font-weight: 400;
-      margin-top: 0;
-      position: relative;
-      margin-bottom: 40px;
-      left: 100px;
-
-      &:before {
-        font-family: 'La Belle Aurore', cursive;
-        color: #ffd700;
-        font-size: 18px;
-        position: absolute;
-        margin-top: -10px;
-        left: -10px;
-        opacity: 0.6;
-        line-height: 18px;
-      }
-
-      &:after {
-        font-family: 'La Belle Aurore', cursive;
-        color: #ffd700;
-        font-size: 18px;
-        line-height: 18px;
-        position: absolute;
-        left: -30px;
-        bottom: -20px;
-        margin-left: 20px;
-        opacity: 0.6;
-      }
+    &::before { 
+        color: #ffd700; 
+        position: absolute; 
+        margin-top: -40px; 
+        left: 15px; 
+        opacity: 0.6; 
     }
+
+    &::after { 
+        color: #ffd700; 
+        position: absolute; 
+        margin-top: 18px; 
+        left: 20px; 
+        animation: fadeIn 1s 1.7s backwards; 
+        opacity: 0.6; 
+    }
+  }
 
     p {
       font-size: 16px;
