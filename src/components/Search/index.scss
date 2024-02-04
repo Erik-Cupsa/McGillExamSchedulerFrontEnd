@@ -88,4 +88,13 @@ button:active {
   font-size: 22px;
   padding: 24px 46px 24px 26px;
 }
+}
+
+@media screen and (max-width: 1150px){
+  .search-page{
+    .text-zone{
+      top:15%;
+      width: 80%;
+    }
   }
+}
