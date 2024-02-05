@@ -26,8 +26,17 @@ const Calendar = () => {
   };
 
   const formatDateTime = (dateTime) => {
-    const isoDateTime = new Date(dateTime).toISOString();
-    return isoDateTime.replace(/[-:]/g, '').slice(0, -5);
+    // Create a new Date object from the input dateTime
+    const inputDate = new Date(dateTime);
+  
+    // Adjust the time zone offset to Eastern Standard Time (EST)
+    const estOffset = -4 * 60; // Eastern Standard Time offset is -5 hours
+    const estTime = new Date(inputDate.getTime() + estOffset * 60 * 1000);
+  
+    // Format the date and time in EST
+    const formattedDateTime = estTime.toISOString().replace(/[-:]/g, '').slice(0, -5);
+  
+    return formattedDateTime;
   };
 
   const handleExportCalendar = () => {
