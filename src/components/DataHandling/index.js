@@ -10,7 +10,7 @@ const DataHandling = () => {
   const [selectedExams, setSelectedExams] = useState([]);
   const [letterClass, setLetterClass] = useState("text-animate");
   const [searchQuery, setSearchQuery] = useState("");
-  const isMobileView = window.innerWidth <= 900;
+  const isMobileView = window.innerWidth <= 1150;
 
   useEffect(() => {
     const storedCalendar = JSON.parse(localStorage.getItem('calendar')) || [];
@@ -25,7 +25,7 @@ const DataHandling = () => {
 
     if (className) {
       axios
-        .get(`http://localhost:8080/api/v1/exam?className=${encodeURIComponent(className)}`)
+        .get(`https://mcgill-exams.onrender.com/api/v1/exam?className=${encodeURIComponent(className)}`)
         .then((response) => {
           setExamData(response.data);
           setLoading(false);

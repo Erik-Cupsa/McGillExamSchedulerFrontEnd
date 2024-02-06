@@ -6,6 +6,7 @@ import emailjs from "@emailjs/browser"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons"
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { faGithub } from "@fortawesome/free-brands-svg-icons"
 
 const Contact = () => {
     const [letterClass, setLetterClass] = useState('text-animate')
@@ -52,11 +53,11 @@ const Contact = () => {
                                 <h1>
                                     <AnimatedLetters letterClass={letterClass} strArray = {"Contact me".split("")} idx = {15} />
                                 </h1>
-                                <p>
+                                <h2>
                                     <br/>
                                     Thank you for your interest in getting in touch! 
                                     <br/>
-                                    <br/>I value open communication and welcome any inquiries, feedback, or collaboration opportunities. Please don't hesitate to get in touch with me by filling out the contact form.
+                                    <br/>I value open communication and welcome any inquiries, feedback, or collaboration opportunities. Please don't hesitate to get in touch with me by filling out the contact form, especially if you find any errors!
                                     <br/>
                                     <br/>
                                     <a target = "_blank" rel = "noreferrer" href = "https://www.linkedin.com/in/erik-cupsa/">
@@ -65,7 +66,10 @@ const Contact = () => {
                                     <a target = "_blank" rel = "noreferrer" href = "mailto:ErikCupsa@gmail.com">
                                         <FontAwesomeIcon icon={faEnvelope} class = "icon" color = "#4d4d4e" />
                                     </a>
-                                </p>
+                                    <a target = "_blank" rel = "noreferrer" href = "https://github.com/Erik-Cupsa">
+                                        <FontAwesomeIcon icon={faGithub} class = "icon" color = "#4d4d4e" />
+                                    </a>
+                                </h2>
                             </td>
                             <td className="right-side">
                                 <div className="contact-form" onSubmit={sendEmail}>
