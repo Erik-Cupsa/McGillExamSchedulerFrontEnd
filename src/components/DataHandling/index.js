@@ -25,7 +25,7 @@ const DataHandling = () => {
 
     if (className) {
       axios
-        .get(`http://localhost:8080/api/v1/exam?className=${encodeURIComponent(className)}`)
+        .get(`https://mcgill-exams.onrender.com/api/v1/exam?className=${encodeURIComponent(className)}`)
         .then((response) => {
           setExamData(response.data);
           setLoading(false);
