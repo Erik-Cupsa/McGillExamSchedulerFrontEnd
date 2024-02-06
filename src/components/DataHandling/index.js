@@ -10,7 +10,7 @@ const DataHandling = () => {
   const [selectedExams, setSelectedExams] = useState([]);
   const [letterClass, setLetterClass] = useState("text-animate");
   const [searchQuery, setSearchQuery] = useState("");
-  const isMobileView = window.innerWidth <= 900;
+  const isMobileView = window.innerWidth <= 1150;
 
   useEffect(() => {
     const storedCalendar = JSON.parse(localStorage.getItem('calendar')) || [];

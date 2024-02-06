@@ -5,6 +5,7 @@ import AnimatedLetters from '../AnimatedLetters';
 const Calendar = () => {
   const [selectedExams, setSelectedExams] = useState([]);
   const [letterClass, setLetterClass] = useState("text-animate");
+  const isMobileView = window.innerWidth <= 1150;
 
   useEffect(() => {
     const storedCalendar = JSON.parse(localStorage.getItem('calendar')) || [];
@@ -113,11 +114,25 @@ const Calendar = () => {
             <table>
               <thead>
                 <tr>
-                  <th>Course</th>
-                  <th>Type</th>
-                  <th>Start Time</th>
-                  <th>End Time</th>
-                  <th>Actions</th>
+                  {isMobileView ? (
+                    <>
+                      <th>Course</th>
+                      <th>Actions</th>
+                    </>
+                  ): (
+                    <>
+                      <th>Course</th>
+                      <th>Type</th>
+                      <th>Start Time</th>
+                      <th>End Time</th>
+                      {/* <th>Building</th>
+                      <th>Room</th>
+                      <th>Rows</th>
+                      <th>Row Start</th>
+                      <th>Row End</th> */}
+                      <th>Actions</th>
+                    </>
+                  )}
                 </tr>
               </thead>
               <tbody>
@@ -126,9 +141,18 @@ const Calendar = () => {
                     <td>
                       <strong>{exam.course}</strong>
                     </td>
-                    <td>{exam.exam_type}</td>
-                    <td>{exam.exam_start_time}</td>
-                    <td>{exam.exam_end_time}</td>
+                    {!isMobileView && (
+                    <>
+                      <td>{exam.exam_type}</td>
+                      <td>{exam.exam_start_time}</td>
+                      <td>{exam.exam_end_time}</td>
+                      {/* <td>{exam.building}</td>
+                      <td>{exam.room}</td>
+                      <td>{exam.rows}</td>
+                      <td>{exam.rowStart}</td>
+                      <td>{exam.rowEnd}</td> */}
+                    </>
+                  )}
                     <td>
                       <button className="remove" onClick={() => handleRemoveExam(exam.examKey)}>
                         <span className="shadow"></span>
