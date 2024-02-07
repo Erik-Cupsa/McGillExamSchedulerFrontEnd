@@ -25,7 +25,7 @@ const DataHandling = () => {
 
     if (className) {
       axios
-        .get(`https://mcgill-exams.onrender.com/api/v1/exam?className=${encodeURIComponent(className)}`)
+        .get(`https://mcgill-exams-26fa9ab0fe41.herokuapp.com/api/v1/exam?className=${encodeURIComponent(className)}`)
         .then((response) => {
           setExamData(response.data);
           setLoading(false);
