@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import Loader from "react-loaders";
 import { Link } from "react-router-dom";
 import AnimatedLetters from "../AnimatedLetters";
 import "./index.scss";
 import Logo from "./Logo";
-
 const Home = () => {
     const [letterClass, setLetterClass] = useState("text-animate")
     const welcomeArray1 = "Welcome To".split("");
@@ -36,7 +34,6 @@ const Home = () => {
                 </div>
                 <Logo className="Home"/>
             </div>
-            <Loader type="pacman" />
         </>
     )
 }

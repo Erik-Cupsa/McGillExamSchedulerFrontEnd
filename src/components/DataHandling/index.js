@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './index.scss';
 import AnimatedLetters from '../AnimatedLetters';
+import Loader from 'react-loaders';
 
 const DataHandling = () => {
   const [loading, setLoading] = useState(true);
@@ -11,6 +12,7 @@ const DataHandling = () => {
   const [letterClass, setLetterClass] = useState("text-animate");
   const [searchQuery, setSearchQuery] = useState("");
   const isMobileView = window.innerWidth <= 1150;
+  const [addedExams, setAddedExams] = useState(new Set());
 
   useEffect(() => {
     const storedCalendar = JSON.parse(localStorage.getItem('calendar')) || [];
@@ -56,6 +58,16 @@ const DataHandling = () => {
     }, 1);
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      setLoading(true);
+
+      setTimeout(() => {
+        window.location.href = `/data?name=${encodeURIComponent(searchQuery)}`;
+      }, 1);
+    }
+  };
+
   const handleAddToCalendar = (exam) => {
     const isDuplicate = selectedExams.some((selectedExam) => selectedExam.examKey === exam.examKey);
   
@@ -64,6 +76,7 @@ const DataHandling = () => {
         const updatedExams = [...prevSelectedExams, exam];
   
         localStorage.setItem('calendar', JSON.stringify(updatedExams));
+        setAddedExams((prevAddedExams) => new Set([...prevAddedExams, exam.examKey]));
   
         return updatedExams;
       });
@@ -79,14 +92,18 @@ const DataHandling = () => {
   }
 
   return (
+    <>
     <div className="container data-page">
       <div className="text-zone">
         <h1>
-        <br />
           <br />
-          <AnimatedLetters letterClass={letterClass} strArray={"Results".split("")} idx={18} />
+          <br />
+          <AnimatedLetters letterClass={letterClass} strArray={"Results".split("")} idx={14} />
         </h1>
-        <div className="table-container">
+        {examData.length === 0 ? (
+          <h2>No results found for the given search, please try again!</h2>
+        ): (
+          <div className="table-container">
           <table>
             <thead>
               <tr>
@@ -133,10 +150,10 @@ const DataHandling = () => {
                     </>
                   )}
                   <td>
-                    <button onClick={() => handleAddToCalendar(exam)}>
+                    <button onClick={() => handleAddToCalendar(exam)} disabled={addedExams.has(exam.examKey)}>
                       <span class="shadow"></span>
                       <span class="edge"></span>
-                      <span class="front text">Add To Calendar</span>
+                      <span class="front text">{addedExams.has(exam.examKey) ? 'Added' : 'Add To Calendar'}</span>
                     </button>
                   </td>
                 </tr>
@@ -144,6 +161,7 @@ const DataHandling = () => {
             </tbody>
           </table>
         </div>
+        )}
         <h2>
           <div className="searchBox">
             <input
@@ -153,6 +171,7 @@ const DataHandling = () => {
               placeholder="Search for more exams"
               value={searchQuery}
               onChange={handleSearchChange}
+              onKeyPress={handleKeyPress}
             />
             <button class="searchButton" href="#" onClick={handleGoButtonClick}>
               <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
@@ -182,6 +201,8 @@ const DataHandling = () => {
         </h2>
       </div>
     </div>
+    <Loader type="pacman" />
+    </>
   );
 };
 

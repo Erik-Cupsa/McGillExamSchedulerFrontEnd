@@ -27,10 +27,20 @@ const Search = () => {
 
     setTimeout(() => {
       window.location.href = `/data?name=${encodeURIComponent(searchQuery)}`;
-    }, 1);
+    }, 1000);
+  };
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      setLoading(true);
+
+      setTimeout(() => {
+        window.location.href = `/data?name=${encodeURIComponent(searchQuery)}`;
+      }, 1000);
+    }
   };
 
   return (
+    <>
     <div className="container search-page">
       <div className="text-zone">
         <h1>
@@ -47,6 +57,7 @@ const Search = () => {
           placeholder="Search for exams"
           value={searchQuery}
           onChange={handleSearchChange}
+          onKeyPress={handleKeyPress}
         />
         <button class="searchButton" href="#" onClick={handleGoButtonClick}>
           <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
@@ -75,9 +86,9 @@ const Search = () => {
       </div>
       </h2>
       </div>
-
-      {loading && <Loader type="pacman" />}
     </div>
+    <Loader type="pacman" />
+    </>
   );
 };
 

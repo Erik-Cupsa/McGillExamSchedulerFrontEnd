@@ -3,11 +3,11 @@
     position: absolute; 
     align-content: center;
     left: 10%; 
-    top: 30%; 
+    top: 33%; 
     transform: translateY(-50%); 
     max-height: 90%; 
     display: absolute;
-    max-width: 80%;
+    max-width: 90%;
   }
     overflow: auto;
     h1{
@@ -36,6 +36,7 @@
     }
     h2 { 
       animation: fadeIn 1s 1.8s backwards; 
+      color: #fff;
   }
   .searchBox {
     display: flex;
