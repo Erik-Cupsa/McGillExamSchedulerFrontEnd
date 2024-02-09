@@ -37,7 +37,7 @@
     h2 { 
         color: #fff; 
         margin-top: 20px; 
-        font-weight: 550; 
+        font-weight: 400; 
         font-size: 14px; 
         letter-spacing: 2px; 
         animation: fadeIn 1s 1.8s backwards; 
@@ -100,8 +100,9 @@
 @media screen and (max-width: 1150px){
     .home-page{
         h1{
-            font-size: 30px; 
+            font-size: 29px; 
             justify-content: center;
+            letter-spacing: 0.5px; 
         }
         .text-zone{
             position: initial;
@@ -112,6 +113,9 @@
             display: inline-block;
             text-align: left;
             margin-left: 20px;
+        }
+        h2 {
+            font-size: 12px;
         }
 
         .logo-container {

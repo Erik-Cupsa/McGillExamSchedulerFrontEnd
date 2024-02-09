@@ -132,13 +132,13 @@
         width: 450px;
         margin-top: 100px;
     }
-
-    @media screen and (max-width: 1000px){
-        .left-side{
-            margin-top: -10px;
+    @media screen and (max-width: 1150px){
+        h1{
+            font-size: 50px;
         }
-    }
-    @media screen and (max-width: 700px){
+        .text-zone{
+            overflow: hidden;
+        }
         .map-wrap {
             float: none; 
             width: 100%; 
@@ -149,8 +149,12 @@
             display: none; 
         }
         .left-side{
-            width: 74%;
+            width: 100%;
             margin-top: -15px;
+            padding-left: 0;
+        }
+        .right-side{
+            padding-left: 10000px;
         }
         .icon{
             margin: 10px;

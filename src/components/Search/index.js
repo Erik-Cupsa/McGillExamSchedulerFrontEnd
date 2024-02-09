@@ -48,7 +48,8 @@ const Search = () => {
         <br />
         <AnimatedLetters letterClass={letterClass} strArray={"Search".split("")} idx={15} />
       </h1>
-      <h2>Discover your exam schedule by entering the course code (e.g. ECSE 200). To add an exam to your calendar, simply click the button!
+      <h2>Find your exam schedule by entering the course code (e.g. ECSE 200). Feel free to search more broadly using the relevant code for your faculty if needed!
+        <br/><br/>To add an exam to your calendar, simply click the button. Once you are done, go to the Calendar section and export your personalized schedule!
       <div className="searchBox">
         <input
           class="searchInput"

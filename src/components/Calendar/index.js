@@ -109,6 +109,7 @@ const Calendar = () => {
           <br />
           <AnimatedLetters letterClass={letterClass} strArray={"Calendar".split("")} idx={15} />
         </h1>
+        <h2>Note: Building location and rows will be updated upon release of full exam schedule.</h2>
         {selectedExams.length === 0 ? (
           <h2>No exams in your schedule.</h2>
         ) : (

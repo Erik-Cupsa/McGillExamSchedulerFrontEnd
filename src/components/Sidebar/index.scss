@@ -165,7 +165,7 @@
 
             a { 
                 display: flex;
-                padding-left: 35%; 
+                padding-left: 33%; 
                 margin: 30px;
             }
 
@@ -201,3 +201,16 @@
     }
   }
   
+  @media screen and (max-width: 500px){
+    .nav-bar{
+        nav{
+            a { 
+                padding-left: 22%; 
+                margin: 30px;
+            }
+            .button-link{
+                margin-left: 32%;
+            }
+        }
+    }
+}
