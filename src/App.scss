@@ -1,6 +1,6 @@
-$primary-color: #FFD700;
-
+@import 'loaders.css/loaders.min.css';
 @import 'animate.css'; 
+$primary-color: #FFD700;
 
 .loader-active { 
     display: block; 
@@ -14,4 +14,4 @@ $primary-color: #FFD700;
     height: 50px; 
     animation: fadeOut 1s 1s; 
     animation-fill-mode: forwards;
-  }
+}

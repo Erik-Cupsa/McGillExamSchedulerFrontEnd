@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './index.scss';
 import AnimatedLetters from '../AnimatedLetters';
+import Loader from 'react-loaders';
 
 const DataHandling = () => {
   const [loading, setLoading] = useState(true);
@@ -91,6 +92,7 @@ const DataHandling = () => {
   }
 
   return (
+    <>
     <div className="container data-page">
       <div className="text-zone">
         <h1>
@@ -199,6 +201,8 @@ const DataHandling = () => {
         </h2>
       </div>
     </div>
+    <Loader type="pacman" />
+    </>
   );
 };
 
