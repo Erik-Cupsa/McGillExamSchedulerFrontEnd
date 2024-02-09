@@ -11,6 +11,7 @@ const DataHandling = () => {
   const [letterClass, setLetterClass] = useState("text-animate");
   const [searchQuery, setSearchQuery] = useState("");
   const isMobileView = window.innerWidth <= 1150;
+  const [addedExams, setAddedExams] = useState(new Set());
 
   useEffect(() => {
     const storedCalendar = JSON.parse(localStorage.getItem('calendar')) || [];
@@ -64,6 +65,7 @@ const DataHandling = () => {
         const updatedExams = [...prevSelectedExams, exam];
   
         localStorage.setItem('calendar', JSON.stringify(updatedExams));
+        setAddedExams((prevAddedExams) => new Set([...prevAddedExams, exam.examKey]));
   
         return updatedExams;
       });
@@ -133,10 +135,10 @@ const DataHandling = () => {
                     </>
                   )}
                   <td>
-                    <button onClick={() => handleAddToCalendar(exam)}>
+                    <button onClick={() => handleAddToCalendar(exam)} disabled={addedExams.has(exam.examKey)}>
                       <span class="shadow"></span>
                       <span class="edge"></span>
-                      <span class="front text">Add To Calendar</span>
+                      <span class="front text">{addedExams.has(exam.examKey) ? 'Added' : 'Add To Calendar'}</span>
                     </button>
                   </td>
                 </tr>
