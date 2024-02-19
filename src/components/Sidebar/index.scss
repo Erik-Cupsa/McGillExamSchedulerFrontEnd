@@ -132,6 +132,16 @@
             
            }
     }
+    .icon{
+        width: 50px;
+        margin: 30px;
+        opacity: 0.8;
+        color: #ff4000; 
+
+        &:hover { 
+            opacity: 1;
+        }
+    }
 }
 
 .hamburger-icon, 

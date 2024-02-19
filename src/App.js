@@ -7,6 +7,7 @@ import Search from './components/Search';
 import DataHandling from './components/DataHandling';
 import Calendar from './components/Calendar';
 import Contact from './components/Contact';
+import Searching from './components/Searching';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="data" element={<DataHandling />} />
           <Route path="calendar" element={<Calendar />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="searching" element={<Searching />} />
         </Route>
       </Routes>
     </>

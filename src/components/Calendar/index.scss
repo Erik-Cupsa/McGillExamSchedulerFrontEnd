@@ -207,8 +207,8 @@ button {
    }
 
    .button {
-    margin-top: 500px;
-    margin-left: 130px;
+    left: 10%; 
+    top: 68%; 
     --main-focus: #2d8cf0;
     --font-color: #dedede;
     --bg-color-sub: #222;
@@ -298,7 +298,7 @@ button {
       }
     }
     .button{
-      margin-top:450px;
+      top: 60%;
     }
   }
 }

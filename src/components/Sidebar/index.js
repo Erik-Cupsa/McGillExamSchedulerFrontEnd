@@ -5,6 +5,7 @@ import { faHome, faSearch, faCalendar, faEnvelope, faClose, faBars } from '@fort
 import LogoMcGill from "../../assets/McGillLogo.png"
 import LogoSubtitle from '../../assets/exam-sub-logo.png'
 import { useState } from 'react'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 const Sidebar = () => {
     const [showNav, setShowNav] = useState(false)
