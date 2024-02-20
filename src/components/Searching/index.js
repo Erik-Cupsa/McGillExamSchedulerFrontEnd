@@ -167,11 +167,12 @@ const Searching = () => {
     <>
       <div className="container data-page">
         <div className="text-zone">
-          <h1>
-            <br />
-            <br />
-            <AnimatedLetters letterClass={letterClass} strArray={"Calendar".split("")} idx={14} />
-          </h1>
+            <h2>
+                Find your exam schedule by entering the course code (e.g. ECSE 200).
+                <br/>
+                <br/>
+                Note: Building location and rows will be updated upon release of the full exam schedule.
+            </h2>
           <Select
             options={examData.map((exam) => ({
               value: exam,
@@ -189,7 +190,6 @@ const Searching = () => {
           />
         </div>
         <div className="calendar">
-          <h2>Note: Building location and rows will be updated upon release of the full exam schedule.</h2>
           {selectedExams.length === 0 ? (
             <h2>No exams in your schedule.</h2>
           ) : (
