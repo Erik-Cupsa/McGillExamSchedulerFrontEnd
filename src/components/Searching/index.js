@@ -48,9 +48,9 @@ const Searching = () => {
       width: '70%',
       padding: '12px 23px 12px 12px',
       boxShadow: 'none',
-      borderRadius: '0', // Add or adjust border radius as needed
-      borderBottom: '2px solid #4A90E2', // Add or adjust bottom border as needed
-      transition: 'border-bottom 0.3s ease', // Add transition effect
+      borderRadius: '0', 
+      borderBottom: '2px solid #4A90E2', 
+      transition: 'border-bottom 0.3s ease',
     }),
     option: (provided, state) => ({
       ...provided,
