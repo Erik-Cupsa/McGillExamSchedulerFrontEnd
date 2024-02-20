@@ -44,8 +44,9 @@ const Searching = () => {
       background: 'none',
       outline: 'none',
       color: 'white',
-      fontSize: '22px',
-      padding: '24px 46px 24px 26px',
+      fontSize: '15px',
+      width: '70%',
+      padding: '12px 23px 12px 12px',
       boxShadow: 'none',
       borderRadius: '0', // Add or adjust border radius as needed
       borderBottom: '2px solid #4A90E2', // Add or adjust bottom border as needed
@@ -53,8 +54,8 @@ const Searching = () => {
     }),
     option: (provided, state) => ({
       ...provided,
-      backgroundColor: state.isSelected ? '#ff1a05' : 'transparent',
-      color: state.isSelected ? 'white' : '#ddd',
+      backgroundColor: state.isSelected ? 'blue' : 'transparent',
+      color: state.isSelected ? 'red' : '#ddd',
       ':hover': {
         backgroundColor: '#ff1a05',
         color: 'white',
@@ -62,23 +63,26 @@ const Searching = () => {
     }),
     menu: (provided) => ({
       ...provided,
-      backgroundColor: '#333', // Adjust background color of the dropdown menu
+      backgroundColor: '#333',
     }),
-    singleValue: (provided) => ({
+    multiValue: (provided) => ({
       ...provided,
       color: 'white',
+      backgroundColor: "#ff1a05",
+      font: "white",
+      borderRadius: "7px",
     }),
     placeholder: (provided) => ({
       ...provided,
-      color: '#ccc', // Adjust placeholder color
+      color: '#ccc',
     }),
     indicatorSeparator: (provided) => ({
       ...provided,
-      backgroundColor: '#ccc', // Adjust color of the indicator separator
+      backgroundColor: 'transparent',
     }),
     indicatorsContainer: (provided) => ({
       ...provided,
-      color: '#ccc', // Adjust color of the dropdown indicators
+      color: '#ccc', 
     }),
   };
   

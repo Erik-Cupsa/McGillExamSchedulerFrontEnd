@@ -8,6 +8,7 @@
       max-height: 90%; 
       display: absolute;
       max-width: 90%;
+      z-index: 2;
     }
     .calendar{
       position: absolute; 
@@ -18,6 +19,7 @@
       max-height: 90%; 
       display: absolute;
       max-width: 90%;
+      z-index: 1;
     }
       overflow: auto;
       h1{
@@ -45,7 +47,7 @@
         }
       }
       h2 { 
-        animation: fadeIn 1s 1.8s backwards; 
+        animation: fadeIn 1s 1s backwards; 
         color: #fff;
     }
     .searchBox {
@@ -87,7 +89,8 @@
   }
   .button {
     left: 50%;
-    top: 30%; 
+    margin-left: 100px;
+    top: 35%; 
     --main-focus: #2d8cf0;
     --font-color: #dedede;
     --bg-color-sub: #222;
@@ -149,15 +152,6 @@
     transform: translate(3px, 3px);
     box-shadow: 0px 0px var(--main-color);
   }
-  
-  .searchInput {
-    border: none;
-    background: none;
-    outline: none;
-    color: white;
-    font-size: 22px;
-    padding: 24px 46px 24px 26px;
-  }
       .table-container::-webkit-scrollbar {
         width: 12px; 
       }
@@ -171,7 +165,7 @@
         background-color: transparent;
       }
       .table-container {
-        animation: fadeIn 1s 1.8s backwards; 
+        animation: fadeIn 1s 0.1s backwards; 
         margin: 20px auto;
         font-family: Arial, sans-serif;
         background: linear-gradient(#212121, #212121) padding-box,
