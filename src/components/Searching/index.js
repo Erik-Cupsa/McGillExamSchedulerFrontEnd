@@ -12,12 +12,8 @@ const Searching = () => {
   const [selectedExams, setSelectedExams] = useState([]);
   const [letterClass, setLetterClass] = useState("text-animate");
   const isMobileView = window.innerWidth <= 1150;
-  const [addedExams, setAddedExams] = useState(new Set());
 
   useEffect(() => {
-    const storedCalendar = JSON.parse(localStorage.getItem('calendar')) || [];
-    setSelectedExams(storedCalendar);
-  
     const params = new URLSearchParams(window.location.search);
     const className = params.get('name');
   
@@ -41,24 +37,51 @@ const Searching = () => {
     };
   }, [window.location.search]);
 
-  const handleAddToCalendar = () => {
-    if (selectedExams.length > 0) {
-      const newAddedExams = new Set([...addedExams]);
-
-      selectedExams.forEach((exam) => {
-        const isDuplicate = newAddedExams.has(exam.examKey);
-
-        if (!isDuplicate) {
-          newAddedExams.add(exam.examKey);
-        }
-      });
-
-      setSelectedExams([]);
-      setAddedExams(newAddedExams);
-
-      localStorage.setItem('calendar', JSON.stringify([...addedExams, ...selectedExams]));
-    }
+  const customSelectStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      border: 'none',
+      background: 'none',
+      outline: 'none',
+      color: 'white',
+      fontSize: '22px',
+      padding: '24px 46px 24px 26px',
+      boxShadow: 'none',
+      borderRadius: '0', // Add or adjust border radius as needed
+      borderBottom: '2px solid #4A90E2', // Add or adjust bottom border as needed
+      transition: 'border-bottom 0.3s ease', // Add transition effect
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isSelected ? '#ff1a05' : 'transparent',
+      color: state.isSelected ? 'white' : '#ddd',
+      ':hover': {
+        backgroundColor: '#ff1a05',
+        color: 'white',
+      },
+    }),
+    menu: (provided) => ({
+      ...provided,
+      backgroundColor: '#333', // Adjust background color of the dropdown menu
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: 'white',
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      color: '#ccc', // Adjust placeholder color
+    }),
+    indicatorSeparator: (provided) => ({
+      ...provided,
+      backgroundColor: '#ccc', // Adjust color of the indicator separator
+    }),
+    indicatorsContainer: (provided) => ({
+      ...provided,
+      color: '#ccc', // Adjust color of the dropdown indicators
+    }),
   };
+  
 
   const formatDateTime = (dateTime) => {
     const inputDate = new Date(dateTime);
@@ -124,7 +147,7 @@ const Searching = () => {
   
       const startTime = formatDateTime(exam.exam_start_time);
       const endTime = formatDateTime(exam.exam_end_time);
-  
+
       const calendarContent = [
         `text=${encodeURIComponent(`${exam.course} - ${exam.exam_type}`)}`,
         `dates=${startTime}/${endTime}`,
@@ -159,9 +182,10 @@ const Searching = () => {
               label: `${exam.course} - ${exam.section}`
             }))}
             onChange={(selectedOptions) => setSelectedExams(selectedOptions.map((option) => option.value))}
-            isMulti // Enable multi-select
+            isMulti 
             isSearchable
-            placeholder="Select exams"
+            placeholder="Search For Exams"
+            styles={customSelectStyles}
           />
         </div>
         <div className="calendar">
