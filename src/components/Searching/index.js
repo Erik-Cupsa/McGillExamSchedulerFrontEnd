@@ -51,6 +51,11 @@ const Searching = () => {
       borderRadius: '0', 
       borderBottom: '2px solid #4A90E2', 
       transition: 'border-bottom 0.3s ease',
+
+    }),
+    input: (provided, state) => ({
+        ...provided, 
+        color: "white",
     }),
     option: (provided, state) => ({
       ...provided,
