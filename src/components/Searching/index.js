@@ -46,11 +46,20 @@ const Searching = () => {
       color: 'white',
       fontSize: '15px',
       width: '70%',
+      maxWidth: "470px",
+      maxHeight: "80px",
+      overflowY: "auto",
       padding: '12px 23px 12px 12px',
       boxShadow: 'none',
       borderRadius: '0', 
-      borderBottom: '2px solid #4A90E2', 
+      borderBottom: '2px solid #ff4000', 
       transition: 'border-bottom 0.3s ease',
+      '&:hover': {
+        borderBottomColor: 'orange', 
+      },
+      '&:focus': {
+        borderBottomColor: 'orange',
+      },
 
     }),
     input: (provided, state) => ({
@@ -60,7 +69,7 @@ const Searching = () => {
     option: (provided, state) => ({
       ...provided,
       backgroundColor: state.isSelected ? 'blue' : 'transparent',
-      color: state.isSelected ? 'red' : '#ddd',
+      color: state.isSelected ? '#ff1a05' : 'white',
       ':hover': {
         backgroundColor: '#ff1a05',
         color: 'white',
@@ -72,11 +81,13 @@ const Searching = () => {
     }),
     multiValue: (provided) => ({
       ...provided,
-      color: 'white',
       backgroundColor: "#ff1a05",
-      font: "white",
       borderRadius: "7px",
     }),
+    multiValueLabel: (provided) => ({
+        ...provided,
+        color: 'white',
+      }),
     placeholder: (provided) => ({
       ...provided,
       color: '#ccc',
@@ -87,7 +98,7 @@ const Searching = () => {
     }),
     indicatorsContainer: (provided) => ({
       ...provided,
-      color: '#ccc', 
+      color: 'white', 
     }),
   };
   
@@ -200,7 +211,7 @@ const Searching = () => {
         </div>
         <div className="calendar">
           {selectedExams.length === 0 ? (
-            <h2>No exams in your schedule.</h2>
+            <h2>No exams in your calendar.</h2>
           ) : (
             <div className="table-container">
               <table>

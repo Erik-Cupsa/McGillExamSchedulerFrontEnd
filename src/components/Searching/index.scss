@@ -3,7 +3,7 @@
       position: absolute; 
       align-content: center;
       left: 10%; 
-      top: 30%; 
+      top: 23%; 
       transform: translateY(-50%); 
       max-height: 90%; 
       display: absolute;
@@ -14,9 +14,8 @@
       position: absolute; 
       align-content: center;
       left: 10%; 
-      top: 60%; 
+      top: 430px; 
       transform: translateY(-50%); 
-      max-height: 90%; 
       display: absolute;
       max-width: 90%;
       z-index: 1;
@@ -90,7 +89,7 @@
   .button {
     left: 50%;
     margin-left: 100px;
-    top: 35%; 
+    top: 27%; 
     --main-focus: #2d8cf0;
     --font-color: #dedede;
     --bg-color-sub: #222;
@@ -171,14 +170,18 @@
         background: linear-gradient(#212121, #212121) padding-box,
                     linear-gradient(145deg, transparent 35%,#ff1a05, #fd9815) border-box;
         border: 2px solid transparent;
-        overflow: auto;
-        max-height: 300px;
+        overflow-y: visible;
+        height: auto;
+        top: 10%;
+        max-height: none;
   
         table {
             width: 100%;
             border-collapse: collapse;
             border: 1px solid #555; 
             background-color: #333;
+            overflow-y: visible;
+            height: 10px;
   
             th, td {
                 padding: 10px;
